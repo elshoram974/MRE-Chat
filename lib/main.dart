@@ -1,5 +1,5 @@
 import 'package:chat/core/utils/config/locale/generated/l10n.dart';
-import 'package:chat/features/home/presentation/screen/home_screen.dart';
+import 'package:chat/features/auth/presentation/screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       theme: AppTheme.main,
-      home: const HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
