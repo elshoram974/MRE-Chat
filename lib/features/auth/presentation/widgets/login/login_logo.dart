@@ -1,5 +1,6 @@
 import 'package:chat/core/utils/constants/assets.dart';
 import 'package:chat/core/utils/constants/styles.dart';
+import 'package:chat/core/utils/extensions/padding_extension.dart';
 import 'package:flutter/material.dart';
 
 class LoginLogo extends StatelessWidget {
@@ -7,11 +8,12 @@ class LoginLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SliverToBoxAdapter(
+    return SliverToBoxAdapter(
       child: Column(
         children: [
-          Image(image: AssetImage(AppAssets.scholar)),
-          Text('Scholar Chat', style: AppTextStyle.stylePacifico32),
+          (MediaQuery.sizeOf(context).height / 6).hightPadding,
+          const Image(image: AssetImage(AppAssets.scholar)),
+          const Text('Scholar Chat', style: AppTextStyle.stylePacifico32),
         ],
       ),
     );

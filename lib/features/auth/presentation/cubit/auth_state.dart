@@ -11,6 +11,10 @@ class AuthInitial extends AuthState {
   const AuthInitial();
 }
 
+class ChangeObscure extends AuthState {
+  const ChangeObscure();
+}
+
 class Login extends AuthState {
   const Login();
 }

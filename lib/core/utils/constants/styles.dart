@@ -6,4 +6,5 @@ class AppTextStyle {
     fontSize: 32,
     fontFamily: AppString.pacifico,
   );
+  static const TextStyle styleTitle32 = TextStyle(fontSize: 32);
 }

@@ -1,4 +1,5 @@
 import 'package:chat/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:chat/features/auth/presentation/widgets/login/login_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,15 +15,14 @@ class LoginScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => AuthCubit(),
       child: const Scaffold(
-        body: Center(
-          child: CustomScrollView(
-            shrinkWrap: true,
-            slivers: [
-              LoginLogo(),
-              LoginFields(),
-              LoginButton(),
-            ],
-          ),
+        body: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            LoginLogo(),
+            LoginText(),
+            LoginFields(),
+            LoginButton(),
+          ],
         ),
       ),
     );

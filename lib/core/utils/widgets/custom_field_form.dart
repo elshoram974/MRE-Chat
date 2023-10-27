@@ -66,7 +66,13 @@ class CustomFieldForm extends StatelessWidget {
           suffixIcon: suffixIcon == null
               ? null
               : IconButton(
-                  onPressed: onPressSuffixIcon, icon: Icon(suffixIcon)),
+                  onPressed: onPressSuffixIcon,
+                  icon: AnimatedSwitcher(
+                    duration: const Duration(
+                        milliseconds: AppConst.switchTimeInMillie),
+                    child: Icon(suffixIcon, key: ValueKey(suffixIcon)),
+                  ),
+                ),
           prefixIcon: prefixIcon == null
               ? null
               : IconButton(
