@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/login/login_fields.dart';
 import '../widgets/login/login_logo.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -19,16 +20,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class LoginFields extends SliverToBoxAdapter {
-  const LoginFields({super.key});
-
-  @override
-  Widget? get child => const Column(
-        children: [
-          TextField(),
-          TextField(),
-        ],
-      );
 }
