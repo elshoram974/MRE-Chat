@@ -1,1 +1,6 @@
-{}
+{
+    "email": "E-mail",
+    "emailUsernamePhone": "email, username, or phone number",
+    "password": "Password",
+    "enterYourPassword": "Enter your password"
+}

@@ -19,7 +19,7 @@ class CustomFieldForm extends StatelessWidget {
     this.onEditingComplete,
     this.textCapitalization = TextCapitalization.none,
     this.onSaved,
-    this.textInputAction,
+    this.textInputAction = TextInputAction.next,
     this.validator,
   });
   final bool enabled;
@@ -46,6 +46,7 @@ class CustomFieldForm extends StatelessWidget {
       padding: const EdgeInsets.all(AppConst.defaultPadding),
       child: TextFormField(
         autocorrect: true,
+        textAlignVertical: TextAlignVertical.center,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         autofillHints: autofillHints,
         enableSuggestions: true,
