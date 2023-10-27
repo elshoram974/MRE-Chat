@@ -1,4 +1,4 @@
-import 'package:chat/core/extensions/padding_extension.dart';
+import 'package:chat/core/utils/extensions/padding_extension.dart';
 import 'package:chat/core/utils/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 

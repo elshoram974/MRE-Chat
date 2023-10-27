@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "email, username, or phone number"),
         "enterYourPassword":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
         "password": MessageLookupByLibrary.simpleMessage("Password")
       };
 }

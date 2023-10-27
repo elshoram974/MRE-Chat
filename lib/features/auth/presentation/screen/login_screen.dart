@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/login/fields/login_fields.dart';
+import '../widgets/login/login_button.dart';
 import '../widgets/login/login_logo.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -15,6 +16,7 @@ class LoginScreen extends StatelessWidget {
           slivers: [
             LoginLogo(),
             LoginFields(),
+            LoginButton(),
           ],
         ),
       ),
