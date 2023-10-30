@@ -11,23 +11,23 @@ class AuthInitial extends AuthState {
   const AuthInitial();
 }
 
-class ChangeObscure extends AuthState {
-  const ChangeObscure();
+class ChangeObscureState extends AuthState {
+  const ChangeObscureState();
 }
 
-class Login extends AuthState {
-  const Login();
+class LoginState extends AuthState {
+  const LoginState();
 }
 
-class SignUp extends AuthState {
-  const SignUp();
+class SignUpState extends AuthState {
+  const SignUpState();
 }
 
-class Loading extends AuthState {
-  const Loading();
+class LoadingState extends AuthState {
+  const LoadingState();
 }
 
-class Error extends AuthState {
+class ErrorState extends AuthState {
   final String message;
-  const Error(this.message);
+  const ErrorState(this.message);
 }

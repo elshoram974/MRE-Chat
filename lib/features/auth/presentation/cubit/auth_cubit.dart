@@ -3,13 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'auth_state.dart';
 
+enum ShowPass { login, createPass, rePass }
+
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(const AuthInitial());
 
-  bool obscureLogin = true;
-  void changeObscureLogin() {
+  List<bool> obscurePass = [true, true, true];
+  void changeObscureLogin(ShowPass showPass) {
     emit(const AuthInitial());
-    obscureLogin = !obscureLogin;
-    emit(const ChangeObscure());
+    obscurePass[showPass.index] = !obscurePass[showPass.index];
+    emit(const ChangeObscureState());
   }
 }
