@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "720562025915",
+    "project_id": "scholar-chat-679b6",
+    "storage_bucket": "scholar-chat-679b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720562025915:android:647ba627235f9f426b409e",
+        "android_client_info": {
+          "package_name": "com.mrecode.mrechat.chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhfO1aAL3hCeLK70hVT4NHMUruU1m6OOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
