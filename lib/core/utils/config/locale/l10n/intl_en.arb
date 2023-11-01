@@ -1,7 +1,14 @@
 {
     "email": "E-mail",
     "emailUsernamePhone": "email, username, or phone number",
+    "name": "Name",
+    "nameUsername": "Enter your name or username",
     "password": "Password",
     "enterYourPassword": "Enter your password",
-    "login": "Login"
+    "login": "Login",
+    "createNewAccount": "Create a new account",
+    "signUp": "Sign up",
+    "rePassword": "Re-Password",
+    "enterNewPassword": "Enter new password",
+    "retypePassword": "Retype the password"
 }

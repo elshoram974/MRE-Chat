@@ -70,6 +70,26 @@ class S {
     );
   }
 
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your name or username`
+  String get nameUsername {
+    return Intl.message(
+      'Enter your name or username',
+      name: 'nameUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Password`
   String get password {
     return Intl.message(
@@ -95,6 +115,56 @@ class S {
     return Intl.message(
       'Login',
       name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create a new account`
+  String get createNewAccount {
+    return Intl.message(
+      'Create a new account',
+      name: 'createNewAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up`
+  String get signUp {
+    return Intl.message(
+      'Sign up',
+      name: 'signUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Re-Password`
+  String get rePassword {
+    return Intl.message(
+      'Re-Password',
+      name: 'rePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter new password`
+  String get enterNewPassword {
+    return Intl.message(
+      'Enter new password',
+      name: 'enterNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retype the password`
+  String get retypePassword {
+    return Intl.message(
+      'Retype the password',
+      name: 'retypePassword',
       desc: '',
       args: [],
     );

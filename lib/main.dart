@@ -1,6 +1,6 @@
 import 'package:chat/core/utils/config/locale/generated/l10n.dart';
+import 'package:chat/core/utils/config/router.dart';
 import 'package:chat/core/utils/services/bloc_observer.dart';
-import 'package:chat/features/auth/presentation/screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -26,7 +26,7 @@ class AppRoot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Chat App',
       localizationsDelegates: const [
         S.delegate,
@@ -36,7 +36,7 @@ class AppRoot extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       theme: AppTheme.main,
-      home: const LoginScreen(),
+      routerConfig: AppRouter.router,
     );
   }
 }

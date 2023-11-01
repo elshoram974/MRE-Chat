@@ -21,10 +21,13 @@ class CustomFieldForm extends StatelessWidget {
     this.onSaved,
     this.textInputAction = TextInputAction.next,
     this.validator,
+    this.focusNode,
+    this.onFieldSubmitted,
   });
   final bool enabled;
   final bool readOnly;
   final TextCapitalization textCapitalization;
+  final FocusNode? focusNode;
   final TextInputAction? textInputAction;
   final List<String>? autofillHints;
   final TextInputType? keyboardType;
@@ -37,6 +40,7 @@ class CustomFieldForm extends StatelessWidget {
   final void Function()? onPressPrefixIcon;
   final void Function(String)? onChanged;
   final void Function()? onEditingComplete;
+  final void Function(String)? onFieldSubmitted;
   final void Function(String?)? onSaved;
   final String? Function(String?)? validator;
 
@@ -45,6 +49,7 @@ class CustomFieldForm extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(AppConst.defaultPadding),
       child: TextFormField(
+        focusNode: focusNode,
         autocorrect: true,
         textAlignVertical: TextAlignVertical.center,
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -54,6 +59,7 @@ class CustomFieldForm extends StatelessWidget {
         keyboardType: keyboardType,
         onChanged: onChanged,
         onEditingComplete: onEditingComplete,
+        onFieldSubmitted: onFieldSubmitted,
         onSaved: onSaved,
         validator: validator,
         textInputAction: textInputAction,
