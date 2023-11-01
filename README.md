@@ -1,4 +1,4 @@
-# chat
+# MRE Chat
 
 A new Chat app.
 
