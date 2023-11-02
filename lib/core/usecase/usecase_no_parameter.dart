@@ -1,4 +1,6 @@
+import '../status/status.dart';
+
 abstract class UseCase<T> {
   const UseCase();
-  Future<T> call();
+  Future<({Status status, T data})> call();
 }
