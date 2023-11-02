@@ -150,6 +150,16 @@ class S {
     );
   }
 
+  /// `Retype the password`
+  String get retypePassword {
+    return Intl.message(
+      'Retype the password',
+      name: 'retypePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enter new password`
   String get enterNewPassword {
     return Intl.message(
@@ -160,11 +170,101 @@ class S {
     );
   }
 
-  /// `Retype the password`
-  String get retypePassword {
+  /// `Cancel`
+  String get cancel {
     return Intl.message(
-      'Retype the password',
-      name: 'retypePassword',
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Server has bad certificate`
+  String get serverHasBadCertificate {
+    return Intl.message(
+      'Server has bad certificate',
+      name: 'serverHasBadCertificate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your connection timeout`
+  String get yourConnectionTimeout {
+    return Intl.message(
+      'Your connection timeout',
+      name: 'yourConnectionTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error in your connection`
+  String get yourConnectionError {
+    return Intl.message(
+      'Error in your connection',
+      name: 'yourConnectionError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receive timeout`
+  String get receiveTimeout {
+    return Intl.message(
+      'Receive timeout',
+      name: 'receiveTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send timeout`
+  String get sendTimeout {
+    return Intl.message(
+      'Send timeout',
+      name: 'sendTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown error`
+  String get unknownError {
+    return Intl.message(
+      'Unknown error',
+      name: 'unknownError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown response error`
+  String get unknownResponseError {
+    return Intl.message(
+      'Unknown response error',
+      name: 'unknownResponseError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your request was not found, Try again later.`
+  String get requestWasNotFound {
+    return Intl.message(
+      'Your request was not found, Try again later.',
+      name: 'requestWasNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There is a problem with server`
+  String get problemWithServer {
+    return Intl.message(
+      'There is a problem with server',
+      name: 'problemWithServer',
       desc: '',
       args: [],
     );

@@ -9,6 +9,16 @@
     "createNewAccount": "Create a new account",
     "signUp": "Sign up",
     "rePassword": "Re-Password",
+    "retypePassword": "Retype the password",
     "enterNewPassword": "Enter new password",
-    "retypePassword": "Retype the password"
+    "cancel": "Cancel",
+    "serverHasBadCertificate": "Server has bad certificate",
+    "yourConnectionTimeout": "Your connection timeout",
+    "yourConnectionError": "Error in your connection",
+    "receiveTimeout": "Receive timeout",
+    "sendTimeout": "Send timeout",
+    "unknownError": "Unknown error",
+    "unknownResponseError": "Unknown response error",
+    "requestWasNotFound": "Your request was not found, Try again later.",
+    "problemWithServer": "There is a problem with server"
 }

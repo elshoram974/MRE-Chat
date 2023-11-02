@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "createNewAccount":
             MessageLookupByLibrary.simpleMessage("Create a new account"),
         "email": MessageLookupByLibrary.simpleMessage("E-mail"),
@@ -36,9 +37,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameUsername":
             MessageLookupByLibrary.simpleMessage("Enter your name or username"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "problemWithServer": MessageLookupByLibrary.simpleMessage(
+            "There is a problem with server"),
         "rePassword": MessageLookupByLibrary.simpleMessage("Re-Password"),
+        "receiveTimeout":
+            MessageLookupByLibrary.simpleMessage("Receive timeout"),
+        "requestWasNotFound": MessageLookupByLibrary.simpleMessage(
+            "Your request was not found, Try again later."),
         "retypePassword":
             MessageLookupByLibrary.simpleMessage("Retype the password"),
-        "signUp": MessageLookupByLibrary.simpleMessage("Sign up")
+        "sendTimeout": MessageLookupByLibrary.simpleMessage("Send timeout"),
+        "serverHasBadCertificate":
+            MessageLookupByLibrary.simpleMessage("Server has bad certificate"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
+        "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
+        "unknownResponseError":
+            MessageLookupByLibrary.simpleMessage("Unknown response error"),
+        "yourConnectionError":
+            MessageLookupByLibrary.simpleMessage("Error in your connection"),
+        "yourConnectionTimeout":
+            MessageLookupByLibrary.simpleMessage("Your connection timeout")
       };
 }
