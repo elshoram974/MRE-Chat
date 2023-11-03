@@ -9,6 +9,7 @@ class SignUpButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthCubit cubit = BlocProvider.of<AuthCubit>(context, listen: true);
     return SliverToBoxAdapter(
       child: Padding(
         padding: const EdgeInsets.all(AppConst.defaultPadding),
@@ -18,7 +19,7 @@ class SignUpButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppConst.defaultRadius),
             ),
           ),
-          onPressed: BlocProvider.of<AuthCubit>(context).signUp,
+          onPressed: cubit.isSignUpValid ? cubit.signUp : null,
           child: Text(S.of(context).signUp),
         ),
       ),

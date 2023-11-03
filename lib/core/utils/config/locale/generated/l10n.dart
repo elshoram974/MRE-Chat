@@ -329,6 +329,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Not same password`
+  String get notSamePass {
+    return Intl.message(
+      'Not same password',
+      name: 'notSamePass',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

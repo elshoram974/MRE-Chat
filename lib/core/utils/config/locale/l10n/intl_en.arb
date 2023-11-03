@@ -26,5 +26,6 @@
     "enterValidEmail": "Enter valid E-mail",
     "cantBeLessThan": "Can't be less than {min}",
     "cantBeMoreThan": "Can't be more than {max}",
-    "loading": "loading..."
+    "loading": "loading...",
+    "notSamePass": "Not same password"
 }

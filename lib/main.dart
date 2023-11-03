@@ -1,4 +1,4 @@
-import 'package:chat/core/class/scafold_key.dart';
+import 'package:chat/core/class/scaffold_key.dart';
 import 'package:chat/core/utils/config/locale/generated/l10n.dart';
 import 'package:chat/core/utils/config/locale/locale_handler.dart';
 import 'package:chat/core/utils/config/router.dart';
@@ -6,6 +6,7 @@ import 'package:chat/core/utils/constants/string.dart';
 import 'package:chat/core/utils/services/bloc_observer.dart';
 import 'package:chat/core/utils/services/get_it_singleton.dart';
 import 'package:chat/features/auth/data/models/user_model.dart';
+import 'package:chat/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -36,7 +37,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AppRoot();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getIt.get<AuthCubit>()),
+      ],
+      child: const AppRoot(),
+    );
   }
 }
 

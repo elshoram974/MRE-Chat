@@ -15,4 +15,16 @@ class MyBlocObserver extends BlocObserver {
     log(bloc.toString());
     log(change.toString());
   }
+
+  @override
+  void onClose(BlocBase bloc) {
+    log("onClose: $bloc");
+    super.onClose(bloc);
+  }
+
+  @override
+  void onCreate(BlocBase bloc) {
+    log("onCreate: $bloc");
+    super.onCreate(bloc);
+  }
 }

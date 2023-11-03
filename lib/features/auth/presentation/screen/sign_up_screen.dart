@@ -1,7 +1,4 @@
-import 'package:chat/core/utils/services/get_it_singleton.dart';
-import 'package:chat/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../widgets/sign_up/fields/sign_up_fields.dart';
 import '../widgets/sign_up/go_login_button.dart';
@@ -13,19 +10,16 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt.get<AuthCubit>(),
-      child: const Scaffold(
-        body: SafeArea(
-          child: CustomScrollView(
-            physics: BouncingScrollPhysics(),
-            slivers: [
-              SignUpText(),
-              SignUpFields(),
-              SignUpButton(),
-              GoLoginButton(),
-            ],
-          ),
+    return const Scaffold(
+      body: SafeArea(
+        child: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            SignUpText(),
+            SignUpFields(),
+            SignUpButton(),
+            GoLoginButton(),
+          ],
         ),
       ),
     );

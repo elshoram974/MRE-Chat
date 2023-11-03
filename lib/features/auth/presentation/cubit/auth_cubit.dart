@@ -1,4 +1,4 @@
-import 'package:chat/core/class/scafold_key.dart';
+import 'package:chat/core/class/scaffold_key.dart';
 import 'package:chat/core/status/errors.dart';
 import 'package:chat/core/status/status.dart';
 import 'package:chat/core/status/success.dart';
@@ -60,7 +60,7 @@ class AuthCubit extends Cubit<AuthState> {
   String passwordSignUp = '';
   String rePasswordSignUp = '';
 
-  List<bool> obscurePass = [true, true, true];
+  List<bool> obscurePass = [true, true, true, true, true, true];
   void changeObscureLogin(FieldType field) {
     emit(const AuthInitial());
     obscurePass[field.index] = !obscurePass[field.index];
@@ -161,6 +161,7 @@ class AuthCubit extends Cubit<AuthState> {
   @override
   Future<void> close() {
     focusNode.dispose();
+    print("object ");
     return super.close();
   }
 }
