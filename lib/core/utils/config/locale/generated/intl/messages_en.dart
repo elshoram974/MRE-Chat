@@ -46,7 +46,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Retype the password"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
         "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
+        "userNotFound": MessageLookupByLibrary.simpleMessage(
+            "No user found for that email."),
         "weakPassword": MessageLookupByLibrary.simpleMessage(
-            "The password provided is too weak.")
+            "The password provided is too weak."),
+        "wrongPassword": MessageLookupByLibrary.simpleMessage(
+            "Wrong password provided for that user.")
       };
 }

@@ -34,6 +34,10 @@ class ServerFailure extends Failure {
         return ServerFailure(S.current.emailAlreadyInUse);
       case 'invalid-email':
         return ServerFailure(S.current.invalidEmail);
+      case 'user-not-found':
+        return ServerFailure(S.current.userNotFound);
+      case 'wrong-password':
+        return ServerFailure(S.current.wrongPassword);
       default:
     }
     return ServerFailure(

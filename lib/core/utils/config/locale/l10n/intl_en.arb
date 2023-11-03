@@ -15,5 +15,7 @@
     "unknownError": "Unknown error",
     "weakPassword": "The password provided is too weak.",
     "emailAlreadyInUse": "The account already exists for that email.",
-    "invalidEmail": "The email address is badly formatted."
+    "invalidEmail": "The email address is badly formatted.",
+    "userNotFound": "No user found for that email.",
+    "wrongPassword": "Wrong password provided for that user."
 }
