@@ -38,6 +38,8 @@ class ServerFailure extends Failure {
         return ServerFailure(S.current.userNotFound);
       case 'wrong-password':
         return ServerFailure(S.current.wrongPassword);
+      case 'user-disabled' || 'ERROR_USER_DISABLED':
+        return ServerFailure(S.current.userDisabled);
       default:
     }
     return ServerFailure(

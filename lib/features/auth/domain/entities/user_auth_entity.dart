@@ -13,7 +13,7 @@ class UserAuthEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [name, email, password];
 
   factory UserAuthEntity.fromUserCredential(User user) {
     return UserAuthEntity(

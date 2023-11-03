@@ -20,10 +20,13 @@ class UserModel extends UserAuthEntity {
     this.refreshToken,
     this.tenantId,
     required this.uid,
-    super.name,
-    super.email,
+    required super.name,
+    required super.email,
     super.password,
   });
+
+  @override
+  List<Object?> get props => [name, email, password];
 
   factory UserModel.fromUserCredential(User user) {
     return UserModel(

@@ -239,6 +239,16 @@ class S {
       args: [],
     );
   }
+
+  /// `User disabled.`
+  String get userDisabled {
+    return Intl.message(
+      'User disabled.',
+      name: 'userDisabled',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
