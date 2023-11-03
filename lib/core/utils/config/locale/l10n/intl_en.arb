@@ -12,13 +12,8 @@
     "retypePassword": "Retype the password",
     "enterNewPassword": "Enter new password",
     "cancel": "Cancel",
-    "serverHasBadCertificate": "Server has bad certificate",
-    "yourConnectionTimeout": "Your connection timeout",
-    "yourConnectionError": "Error in your connection",
-    "receiveTimeout": "Receive timeout",
-    "sendTimeout": "Send timeout",
     "unknownError": "Unknown error",
-    "unknownResponseError": "Unknown response error",
-    "requestWasNotFound": "Your request was not found, Try again later.",
-    "problemWithServer": "There is a problem with server"
+    "weakPassword": "The password provided is too weak.",
+    "emailAlreadyInUse": "The account already exists for that email.",
+    "invalidEmail": "The email address is badly formatted."
 }

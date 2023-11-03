@@ -180,56 +180,6 @@ class S {
     );
   }
 
-  /// `Server has bad certificate`
-  String get serverHasBadCertificate {
-    return Intl.message(
-      'Server has bad certificate',
-      name: 'serverHasBadCertificate',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Your connection timeout`
-  String get yourConnectionTimeout {
-    return Intl.message(
-      'Your connection timeout',
-      name: 'yourConnectionTimeout',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Error in your connection`
-  String get yourConnectionError {
-    return Intl.message(
-      'Error in your connection',
-      name: 'yourConnectionError',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Receive timeout`
-  String get receiveTimeout {
-    return Intl.message(
-      'Receive timeout',
-      name: 'receiveTimeout',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Send timeout`
-  String get sendTimeout {
-    return Intl.message(
-      'Send timeout',
-      name: 'sendTimeout',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Unknown error`
   String get unknownError {
     return Intl.message(
@@ -240,31 +190,31 @@ class S {
     );
   }
 
-  /// `Unknown response error`
-  String get unknownResponseError {
+  /// `The password provided is too weak.`
+  String get weakPassword {
     return Intl.message(
-      'Unknown response error',
-      name: 'unknownResponseError',
+      'The password provided is too weak.',
+      name: 'weakPassword',
       desc: '',
       args: [],
     );
   }
 
-  /// `Your request was not found, Try again later.`
-  String get requestWasNotFound {
+  /// `The account already exists for that email.`
+  String get emailAlreadyInUse {
     return Intl.message(
-      'Your request was not found, Try again later.',
-      name: 'requestWasNotFound',
+      'The account already exists for that email.',
+      name: 'emailAlreadyInUse',
       desc: '',
       args: [],
     );
   }
 
-  /// `There is a problem with server`
-  String get problemWithServer {
+  /// `The email address is badly formatted.`
+  String get invalidEmail {
     return Intl.message(
-      'There is a problem with server',
-      name: 'problemWithServer',
+      'The email address is badly formatted.',
+      name: 'invalidEmail',
       desc: '',
       args: [],
     );

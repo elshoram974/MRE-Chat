@@ -1,5 +1,5 @@
 import 'package:chat/core/utils/config/locale/generated/l10n.dart';
-import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'status.dart';
 
@@ -18,40 +18,25 @@ class CacheFailure extends Failure {
 class ServerFailure extends Failure {
   const ServerFailure(super.message);
 
-  factory ServerFailure.fromDioException(DioException error) {
-    switch (error.type) {
-      case DioExceptionType.badResponse:
-        return ServerFailure.fromBadResponse(error.response!);
-
-      case DioExceptionType.cancel:
-        return ServerFailure(S.current.cancel);
-
-      case DioExceptionType.badCertificate:
-        return ServerFailure(S.current.serverHasBadCertificate);
-
-      case DioExceptionType.connectionTimeout:
-        return ServerFailure(S.current.yourConnectionTimeout);
-
-      case DioExceptionType.connectionError:
-        return ServerFailure(S.current.yourConnectionError);
-
-      case DioExceptionType.receiveTimeout:
-        return ServerFailure(S.current.receiveTimeout);
-
-      case DioExceptionType.sendTimeout:
-        return ServerFailure(S.current.sendTimeout);
-
-      default:
-        return ServerFailure(S.current.unknownError);
+  factory ServerFailure.fromFirebaseException(FirebaseException exception) {
+    if (exception is FirebaseAuthException) {
+      return ServerFailure.fromFirebaseAuthException(exception);
     }
+
+    return ServerFailure(S.current.unknownError);
   }
-  factory ServerFailure.fromBadResponse(Response response) {
-    int? statusCode = response.statusCode;
-    if (statusCode == 404) {
-      return ServerFailure(S.current.requestWasNotFound);
-    } else if (statusCode == 500) {
-      return ServerFailure(S.current.problemWithServer);
+  factory ServerFailure.fromFirebaseAuthException(FirebaseAuthException e) {
+    String code = e.code;
+    switch (code) {
+      case 'weak-password':
+        return ServerFailure(S.current.weakPassword);
+      case 'email-already-in-use':
+        return ServerFailure(S.current.emailAlreadyInUse);
+      case 'invalid-email':
+        return ServerFailure(S.current.invalidEmail);
+      default:
     }
-    return ServerFailure(S.current.unknownResponseError);
+    return ServerFailure(
+        'Authentication error: \ncode:$code\nmessage:${e.message}');
   }
 }
