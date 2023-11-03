@@ -50,6 +50,16 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Scholar Chat`
+  String get AppName {
+    return Intl.message(
+      'Scholar Chat',
+      name: 'AppName',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `E-mail`
   String get email {
     return Intl.message(

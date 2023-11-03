@@ -1,3 +1,4 @@
+import 'package:chat/core/utils/config/locale/locale_handler.dart';
 import 'package:chat/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:chat/features/auth/presentation/widgets/login/login_text.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,13 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final String code = LocaleHandler().deviceLocale.languageCode;
+      print("code:$code");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(code)),
+      );
+    });
     return BlocProvider(
       create: (context) => AuthCubit(),
       child: const Scaffold(

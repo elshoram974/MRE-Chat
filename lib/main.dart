@@ -1,4 +1,5 @@
 import 'package:chat/core/utils/config/locale/generated/l10n.dart';
+import 'package:chat/core/utils/config/locale/locale_handler.dart';
 import 'package:chat/core/utils/config/router.dart';
 import 'package:chat/core/utils/services/bloc_observer.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,13 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.android);
+
+  await Future.wait([
+    S.load(LocaleHandler().deviceLocale),
+    Firebase.initializeApp(options: DefaultFirebaseOptions.android),
+  ]);
   Bloc.observer = MyBlocObserver();
+
   runApp(const MyApp());
 }
 
@@ -31,7 +37,7 @@ class AppRoot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Chat App',
+      title: S.current.AppName,
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
