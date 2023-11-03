@@ -5,25 +5,25 @@ import '../models/user_model.dart';
 
 abstract class AuthLocalDataSource {
   const AuthLocalDataSource();
-  Future<UserModel?> getUser();
-  Future<String> getUserUid();
-  Future<bool> isLoggedIn();
+  UserModel? getUser();
+  String getUserUid();
+  bool isLoggedIn();
 }
 
 class AuthLocalDataSourceImp extends AuthLocalDataSource {
   const AuthLocalDataSourceImp();
 
   @override
-  Future<UserModel?> getUser() async {
-    final Box<UserModel> box;
-    box = await Hive.openBox<UserModel>(AppString.userHive);
+  UserModel? getUser() {
+    final Box<UserModel> box = Hive.box<UserModel>(AppString.userHive);
+    if (box.isEmpty) return null;
 
     return box.values.first;
   }
 
   @override
-  Future<String> getUserUid() async => (await getUser())!.uid;
+  String getUserUid() => getUser()!.uid;
 
   @override
-  Future<bool> isLoggedIn() async => await getUser() != null;
+  bool isLoggedIn() => getUser() != null;
 }

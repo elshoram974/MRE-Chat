@@ -41,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nameUsername":
             MessageLookupByLibrary.simpleMessage("Enter your name or username"),
+        "noUserLoggedToGetUid": MessageLookupByLibrary.simpleMessage(
+            "Error: no user logged in to get uid."),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "rePassword": MessageLookupByLibrary.simpleMessage("Re-Password"),
         "retypePassword":

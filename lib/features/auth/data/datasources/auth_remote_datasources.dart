@@ -8,9 +8,10 @@ import '../models/user_model.dart';
 abstract class AuthRemoteDataSource {
   const AuthRemoteDataSource();
   Future<User> loginWithEmail(UserAuthEntity user);
-  Future<User> loginWithGoogle();
   Future<User> signUp(UserAuthEntity user);
+  Future<User> loginWithGoogle();
   Future<void> signOut();
+  User getCurrentUser();
   String getUserUid();
   bool isLoggedIn();
 }
@@ -28,6 +29,9 @@ class AuthRemoteDataSourceImp extends AuthRemoteDataSource {
 
   @override
   String getUserUid() => auth.currentUser!.uid;
+
+  @override
+  User getCurrentUser() => auth.currentUser!;
 
   @override
   bool isLoggedIn() => auth.currentUser != null;
@@ -76,24 +80,4 @@ class AuthRemoteDataSourceImp extends AuthRemoteDataSource {
     final int i = await box.add(user);
     return i != 0;
   }
-  // @override
-  // Future<User?> signUp(UserAuthEntity user) async {
-  //   User? newUser;
-  //   try {
-  //     final UserCredential credential =
-  //         await auth.createUserWithEmailAndPassword(
-  //       email: user.email!,
-  //       password: user.password!,
-  //     );
-  //     newUser = credential.user;
-  //   } on FirebaseAuthException catch (e) {
-  //     final ServerFailure fail = ServerFailure.fromFirebaseAuthException(e);
-  //     log(fail.message);
-  //   } on SocketException catch (e) {
-  //     log('SocketException: ${e.message}');
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  //   return newUser;
-  // }
 }

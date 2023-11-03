@@ -14,6 +14,9 @@ abstract class Failure extends Status {
 class CacheFailure extends Failure {
   const CacheFailure(super.message);
 }
+class UnknownFailure extends Failure {
+  const UnknownFailure(super.message);
+}
 
 class ServerFailure extends Failure {
   const ServerFailure(super.message);

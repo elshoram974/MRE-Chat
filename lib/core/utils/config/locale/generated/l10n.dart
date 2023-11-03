@@ -259,6 +259,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Error: no user logged in to get uid.`
+  String get noUserLoggedToGetUid {
+    return Intl.message(
+      'Error: no user logged in to get uid.',
+      name: 'noUserLoggedToGetUid',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -5,13 +5,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../entities/user_auth_entity.dart';
 
-class LoginWithEmailUseCase extends UseCase<User, UserAuthEntity> {
+class LoginWithEmailUseCase extends UseCase<User?, UserAuthEntity> {
   final AuthRepositories repo;
 
   const LoginWithEmailUseCase(this.repo);
 
   @override
-  Future<({Status status, User data})> call(UserAuthEntity parameter) async {
+  Future<({Status status, User? data})> call(UserAuthEntity parameter) async {
     return await repo.loginWithEmail(parameter);
   }
 }

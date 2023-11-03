@@ -19,5 +19,6 @@
     "invalidEmail": "The email address is badly formatted.",
     "userNotFound": "No user found for that email.",
     "wrongPassword": "Wrong password provided for that user.",
-    "userDisabled": "User disabled."
+    "userDisabled": "User disabled.",
+    "noUserLoggedToGetUid": "Error: no user logged in to get uid."
 }
