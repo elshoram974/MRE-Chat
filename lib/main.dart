@@ -3,6 +3,7 @@ import 'package:chat/core/utils/config/locale/locale_handler.dart';
 import 'package:chat/core/utils/config/router.dart';
 import 'package:chat/core/utils/constants/string.dart';
 import 'package:chat/core/utils/services/bloc_observer.dart';
+import 'package:chat/core/utils/services/get_it_singleton.dart';
 import 'package:chat/features/auth/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,12 +17,13 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Future.wait([
-    Hive.initFlutter(),
+  await Future.wait<dynamic>([
     S.load(LocaleHandler().deviceLocale),
     Firebase.initializeApp(options: DefaultFirebaseOptions.android),
+    Hive.initFlutter(),
   ]);
   await Hive.openBox<UserModel>(AppString.userHive);
+  getItSingleton();
   Bloc.observer = MyBlocObserver();
 
   runApp(const MyApp());

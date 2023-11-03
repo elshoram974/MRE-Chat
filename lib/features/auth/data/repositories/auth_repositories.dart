@@ -87,8 +87,9 @@ class AuthRepositoriesImp extends AuthRepositories {
   @override
   Future<({void data, Status status})> signOut() async {
     try {
+      await authRemoteDataSource.signOut();
       return (
-        data: await authRemoteDataSource.signOut(),
+        data: null,
         status: const Success()
       );
     } on FirebaseAuthException catch (e) {

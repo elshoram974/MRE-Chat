@@ -1,4 +1,5 @@
 import 'package:chat/core/utils/config/locale/locale_handler.dart';
+import 'package:chat/core/utils/services/get_it_singleton.dart';
 import 'package:chat/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:chat/features/auth/presentation/widgets/login/login_text.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class LoginScreen extends StatelessWidget {
       );
     });
     return BlocProvider(
-      create: (context) => AuthCubit(),
+      create: (context) => getIt.get<AuthCubit>(),
       child: const Scaffold(
         body: CustomScrollView(
           physics: BouncingScrollPhysics(),
