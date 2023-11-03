@@ -1,3 +1,4 @@
+import 'package:chat/features/auth/domain/entities/user_auth_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,14 @@ import '../../domain/usecases/sign_up_usecase.dart';
 
 part 'auth_state.dart';
 
-enum ShowPass { login, createPass, rePass }
+enum FieldType {
+  loginEmail,
+  loginPass,
+  signUpName,
+  signUpEmail,
+  signUpPass,
+  signUpRePass,
+}
 
 class AuthCubit extends Cubit<AuthState> {
   final LoginWithGoogleUseCase loginWithGoogleUseCase;
@@ -33,14 +41,52 @@ class AuthCubit extends Cubit<AuthState> {
   final FocusNode focusNode = FocusNode();
   final FirebaseAuth auth = FirebaseAuth.instance;
 
+  final GlobalKey<FormState> loginKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> signUpKey = GlobalKey<FormState>();
+  bool isLoginValid = false;
+  String emailLogin = '';
+  String passwordLogin = '';
+
   List<bool> obscurePass = [true, true, true];
-  void changeObscureLogin(ShowPass showPass) {
+  void changeObscureLogin(FieldType field) {
     emit(const AuthInitial());
-    obscurePass[showPass.index] = !obscurePass[showPass.index];
+    obscurePass[field.index] = !obscurePass[field.index];
     emit(const ChangeObscureState());
   }
 
-  void signUp() async {}
+  void onChangeField(FieldType field, String val) {
+    switch (field) {
+      case FieldType.loginEmail:
+        emailLogin = val;
+      case FieldType.loginPass:
+        passwordLogin = val;
+      case FieldType.signUpName:
+      case FieldType.signUpEmail:
+      case FieldType.signUpPass:
+      case FieldType.signUpRePass:
+    }
+    if (loginKey.currentState!.validate()) {
+      isLoginValid = true;
+      emit(const SuccessValidateState());
+    } else {
+      isLoginValid = false;
+      emit(const FailedValidateState());
+    }
+  }
+
+  void signUp() {}
+
+  void login() {
+    if (loginKey.currentState!.validate()) {
+      loginWithEmailUseCase.call(
+        UserAuthEntity(
+          name: '',
+          email: emailLogin,
+          password: passwordLogin,
+        ),
+      );
+    }
+  }
 
   void getUser() {
     auth.idTokenChanges().listen((User? user) {

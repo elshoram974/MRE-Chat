@@ -53,6 +53,7 @@ class AuthRepositoriesImp extends AuthRepositories {
   Future<({User? data, Status status})> loginWithEmail(
       UserAuthEntity user) async {
     try {
+      if (isLoggedIn().data) await signOut();
       final User u = await authRemoteDataSource.loginWithEmail(user);
       return (data: u, status: Success<User>(data: u));
     } on FirebaseAuthException catch (e) {
@@ -70,6 +71,8 @@ class AuthRepositoriesImp extends AuthRepositories {
   @override
   Future<({User? data, Status status})> loginWithGoogle() async {
     try {
+      if (isLoggedIn().data) await signOut();
+
       final User u = await authRemoteDataSource.loginWithGoogle();
       return (data: u, status: Success<User>(data: u));
     } on FirebaseAuthException catch (e) {
@@ -88,10 +91,7 @@ class AuthRepositoriesImp extends AuthRepositories {
   Future<({void data, Status status})> signOut() async {
     try {
       await authRemoteDataSource.signOut();
-      return (
-        data: null,
-        status: const Success()
-      );
+      return (data: null, status: const Success());
     } on FirebaseAuthException catch (e) {
       final ServerFailure fail = ServerFailure.fromFirebaseAuthException(e);
       log(fail.message);
@@ -107,6 +107,8 @@ class AuthRepositoriesImp extends AuthRepositories {
   @override
   Future<({User? data, Status status})> signUp(UserAuthEntity user) async {
     try {
+      if (isLoggedIn().data) await signOut();
+
       final User u = await authRemoteDataSource.signUp(user);
       return (data: u, status: Success<User>(data: u));
     } on FirebaseAuthException catch (e) {

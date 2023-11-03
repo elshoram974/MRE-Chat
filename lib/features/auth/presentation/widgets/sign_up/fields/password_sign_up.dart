@@ -13,8 +13,8 @@ class PasswordField extends StatelessWidget {
     return BlocBuilder<AuthCubit, AuthState>(
       buildWhen: (p, c) => c is ChangeObscureState,
       builder: (context, state) {
-        final bool obscurePass = _.obscurePass[ShowPass.createPass.index];
-        final bool obscureRePass = _.obscurePass[ShowPass.rePass.index];
+        final bool obscurePass = _.obscurePass[FieldType.signUpPass.index];
+        final bool obscureRePass = _.obscurePass[FieldType.signUpRePass.index];
         return Column(
           children: [
             CustomFieldForm(
@@ -26,7 +26,7 @@ class PasswordField extends StatelessWidget {
               obscureText: obscurePass,
               suffixIcon: obscurePass ? Icons.visibility : Icons.visibility_off,
               onEditingComplete: _.focusNode.requestFocus,
-              onPressSuffixIcon: () =>_.changeObscureLogin(ShowPass.createPass),
+              onPressSuffixIcon: () =>_.changeObscureLogin(FieldType.signUpPass),
             ),
             CustomFieldForm(
               focusNode: _.focusNode,
@@ -37,7 +37,7 @@ class PasswordField extends StatelessWidget {
               prefixIcon: Icons.lock_outline,
               obscureText: obscureRePass,
               suffixIcon: obscureRePass ? Icons.visibility : Icons.visibility_off,
-              onPressSuffixIcon: () => _.changeObscureLogin(ShowPass.rePass),
+              onPressSuffixIcon: () => _.changeObscureLogin(FieldType.signUpRePass),
             )
           ],
         );

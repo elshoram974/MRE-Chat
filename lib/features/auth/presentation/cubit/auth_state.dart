@@ -14,6 +14,12 @@ class AuthInitial extends AuthState {
 class ChangeObscureState extends AuthState {
   const ChangeObscureState();
 }
+class SuccessValidateState extends AuthState {
+  const SuccessValidateState();
+}
+class FailedValidateState extends AuthState {
+  const FailedValidateState();
+}
 
 class LoginState extends AuthState {
   const LoginState();

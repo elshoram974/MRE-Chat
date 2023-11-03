@@ -8,28 +8,27 @@ part 'user_model.g.dart';
 class UserModel extends UserAuthEntity {
   @HiveField(0)
   final bool emailVerified;
+  final UserMetadata? metadata;
   @HiveField(1)
-  final UserMetadata metadata;
-  @HiveField(2)
   final String? phoneNumber;
-  @HiveField(3)
+  @HiveField(2)
   final String? photoURL;
-  @HiveField(4)
+  @HiveField(3)
   final String? refreshToken;
-  @HiveField(5)
+  @HiveField(4)
   final String? tenantId;
-  @HiveField(6)
+  @HiveField(5)
   final String uid;
-  @HiveField(7)
+  @HiveField(6)
   final String? displayName;
-  @HiveField(8)
+  @HiveField(7)
   final String? userPassword;
-  @HiveField(9)
+  @HiveField(8)
   final String? emailAddress;
 
   const UserModel({
     required this.emailVerified,
-    required this.metadata,
+    this.metadata,
     this.phoneNumber,
     this.photoURL,
     this.refreshToken,

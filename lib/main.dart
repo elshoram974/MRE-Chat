@@ -7,6 +7,7 @@ import 'package:chat/core/utils/services/get_it_singleton.dart';
 import 'package:chat/features/auth/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -54,6 +55,7 @@ class AppRoot extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       theme: AppTheme.main,
       routerConfig: AppRouter.router,
+      builder: EasyLoading.init(),
     );
   }
 }

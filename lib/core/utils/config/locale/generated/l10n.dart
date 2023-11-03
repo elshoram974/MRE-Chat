@@ -260,6 +260,16 @@ class S {
     );
   }
 
+  /// `An internal error has occurred.`
+  String get invalidLoginCredentials {
+    return Intl.message(
+      'An internal error has occurred.',
+      name: 'invalidLoginCredentials',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Error: no user logged in to get uid.`
   String get noUserLoggedToGetUid {
     return Intl.message(
@@ -267,6 +277,46 @@ class S {
       name: 'noUserLoggedToGetUid',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `fill this field`
+  String get fillField {
+    return Intl.message(
+      'fill this field',
+      name: 'fillField',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter valid E-mail`
+  String get enterValidEmail {
+    return Intl.message(
+      'Enter valid E-mail',
+      name: 'enterValidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can't be less than {min}`
+  String cantBeLessThan(Object min) {
+    return Intl.message(
+      'Can\'t be less than $min',
+      name: 'cantBeLessThan',
+      desc: '',
+      args: [min],
+    );
+  }
+
+  /// `Can't be more than {max}`
+  String cantBeMoreThan(Object max) {
+    return Intl.message(
+      'Can\'t be more than $max',
+      name: 'cantBeMoreThan',
+      desc: '',
+      args: [max],
     );
   }
 }

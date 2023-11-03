@@ -20,10 +20,16 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(min) => "Can\'t be less than ${min}";
+
+  static String m1(max) => "Can\'t be more than ${max}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "AppName": MessageLookupByLibrary.simpleMessage("Scholar Chat"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cantBeLessThan": m0,
+        "cantBeMoreThan": m1,
         "createNewAccount":
             MessageLookupByLibrary.simpleMessage("Create a new account"),
         "email": MessageLookupByLibrary.simpleMessage("E-mail"),
@@ -33,10 +39,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "email, username, or phone number"),
         "enterNewPassword":
             MessageLookupByLibrary.simpleMessage("Enter new password"),
+        "enterValidEmail":
+            MessageLookupByLibrary.simpleMessage("Enter valid E-mail"),
         "enterYourPassword":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "fillField": MessageLookupByLibrary.simpleMessage("fill this field"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
             "The email address is badly formatted."),
+        "invalidLoginCredentials": MessageLookupByLibrary.simpleMessage(
+            "An internal error has occurred."),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nameUsername":
