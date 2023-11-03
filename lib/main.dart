@@ -1,3 +1,4 @@
+import 'package:chat/core/class/scafold_key.dart';
 import 'package:chat/core/utils/config/locale/generated/l10n.dart';
 import 'package:chat/core/utils/config/locale/locale_handler.dart';
 import 'package:chat/core/utils/config/router.dart';
@@ -56,6 +57,7 @@ class AppRoot extends StatelessWidget {
       theme: AppTheme.main,
       routerConfig: AppRouter.router,
       builder: EasyLoading.init(),
+      scaffoldMessengerKey: ScaffoldKey.call,
     );
   }
 }

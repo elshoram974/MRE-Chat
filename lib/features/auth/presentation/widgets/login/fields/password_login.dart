@@ -27,6 +27,7 @@ class PasswordField extends StatelessWidget {
               cubit.changeObscureLogin(FieldType.loginPass),
           onChanged: (val) => cubit.onChangeField(FieldType.loginPass, val),
           validator: (val) => AppValidator.auth(val, 8, 100, FieldType.loginPass, context),
+          onFieldSubmitted:(val) => cubit.login() ,
         );
       },
     );

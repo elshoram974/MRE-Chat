@@ -59,11 +59,12 @@ class AuthRepositoriesImp extends AuthRepositories {
     } on FirebaseAuthException catch (e) {
       final ServerFailure fail = ServerFailure.fromFirebaseAuthException(e);
       log(fail.message);
+      return (data: null, status: fail);
     } on SocketException catch (e) {
       log('SocketException: ${e.message}');
       return (data: null, status: UnknownFailure(e.message));
     } catch (e) {
-      print(e);
+      log('e:$e');
     }
     return (data: null, status: UnknownFailure(S.current.unknownError));
   }
@@ -78,6 +79,7 @@ class AuthRepositoriesImp extends AuthRepositories {
     } on FirebaseAuthException catch (e) {
       final ServerFailure fail = ServerFailure.fromFirebaseAuthException(e);
       log(fail.message);
+      return (data: null, status: fail);
     } on SocketException catch (e) {
       log('SocketException: ${e.message}');
       return (data: null, status: UnknownFailure(e.message));
@@ -95,6 +97,7 @@ class AuthRepositoriesImp extends AuthRepositories {
     } on FirebaseAuthException catch (e) {
       final ServerFailure fail = ServerFailure.fromFirebaseAuthException(e);
       log(fail.message);
+      return (data: null, status: fail);
     } on SocketException catch (e) {
       log('SocketException: ${e.message}');
       return (data: null, status: UnknownFailure(e.message));
@@ -114,6 +117,7 @@ class AuthRepositoriesImp extends AuthRepositories {
     } on FirebaseAuthException catch (e) {
       final ServerFailure fail = ServerFailure.fromFirebaseAuthException(e);
       log(fail.message);
+      return (data: null, status: fail);
     } on SocketException catch (e) {
       log('SocketException: ${e.message}');
       return (data: null, status: UnknownFailure(e.message));

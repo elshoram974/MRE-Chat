@@ -8,7 +8,6 @@ part 'user_model.g.dart';
 class UserModel extends UserAuthEntity {
   @HiveField(0)
   final bool emailVerified;
-  final UserMetadata? metadata;
   @HiveField(1)
   final String? phoneNumber;
   @HiveField(2)
@@ -28,7 +27,6 @@ class UserModel extends UserAuthEntity {
 
   const UserModel({
     required this.emailVerified,
-    this.metadata,
     this.phoneNumber,
     this.photoURL,
     this.refreshToken,
@@ -45,7 +43,6 @@ class UserModel extends UserAuthEntity {
   factory UserModel.fromUserCredential(User user) {
     return UserModel(
       emailVerified: user.emailVerified,
-      metadata: user.metadata,
       uid: user.uid,
       emailAddress: user.email,
       displayName: user.displayName,

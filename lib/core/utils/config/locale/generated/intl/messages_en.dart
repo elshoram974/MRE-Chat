@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "The email address is badly formatted."),
         "invalidLoginCredentials": MessageLookupByLibrary.simpleMessage(
             "An internal error has occurred."),
+        "loading": MessageLookupByLibrary.simpleMessage("loading..."),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nameUsername":

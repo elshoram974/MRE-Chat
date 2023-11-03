@@ -1,8 +1,14 @@
+import 'package:chat/core/class/scafold_key.dart';
+import 'package:chat/core/status/errors.dart';
+import 'package:chat/core/status/status.dart';
+import 'package:chat/core/status/success.dart';
+import 'package:chat/core/utils/config/locale/generated/l10n.dart';
 import 'package:chat/features/auth/domain/entities/user_auth_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../../domain/usecases/email_login_usecase.dart';
 import '../../domain/usecases/get_current_user_usecase.dart';
@@ -44,8 +50,15 @@ class AuthCubit extends Cubit<AuthState> {
   final GlobalKey<FormState> loginKey = GlobalKey<FormState>();
   final GlobalKey<FormState> signUpKey = GlobalKey<FormState>();
   bool isLoginValid = false;
+  bool isSignUpValid = false;
+
   String emailLogin = '';
   String passwordLogin = '';
+
+  String nameSignUp = '';
+  String emailSignUp = '';
+  String passwordSignUp = '';
+  String rePasswordSignUp = '';
 
   List<bool> obscurePass = [true, true, true];
   void changeObscureLogin(FieldType field) {
@@ -61,39 +74,86 @@ class AuthCubit extends Cubit<AuthState> {
       case FieldType.loginPass:
         passwordLogin = val;
       case FieldType.signUpName:
+        nameSignUp = val;
       case FieldType.signUpEmail:
+        emailSignUp = val;
       case FieldType.signUpPass:
+        passwordSignUp = val;
       case FieldType.signUpRePass:
+        rePasswordSignUp = val;
     }
-    if (loginKey.currentState!.validate()) {
-      isLoginValid = true;
-      emit(const SuccessValidateState());
+    if (field == FieldType.loginEmail || field == FieldType.loginPass) {
+      if (loginKey.currentState!.validate()) {
+        isLoginValid = true;
+        emit(const SuccessValidateState());
+      } else {
+        isLoginValid = false;
+        emit(const FailedValidateState());
+      }
     } else {
-      isLoginValid = false;
-      emit(const FailedValidateState());
+      if (signUpKey.currentState!.validate() &&
+          passwordSignUp == rePasswordSignUp) {
+        isSignUpValid = true;
+        emit(const SuccessValidateState());
+      } else {
+        isSignUpValid = false;
+        emit(const FailedValidateState());
+      }
     }
   }
 
-  void signUp() {}
+  void signUp() async {
+    if (signUpKey.currentState!.validate()) {
+      EasyLoading.show(status: S.current.loading);
+      emit(const LoadingState());
+      ({User? data, Status status}) signUp = await signUpUseCase.call(
+        UserAuthEntity(
+          name: nameSignUp,
+          email: emailSignUp,
+          password: passwordSignUp,
+        ),
+      );
+      EasyLoading.dismiss();
+      final Status result = signUp.status;
+      if (result is Success) {
+        emit(SuccessState(signUp.data!));
+        ScaffoldKey.showTesterSnakeBar(S.current.signUp);
+      } else if (result is Failure) {
+        emit(FailureState(result.message));
+        ScaffoldKey.showTesterSnakeBar(result.message);
+      }
+    }
+  }
 
-  void login() {
+  void login() async {
     if (loginKey.currentState!.validate()) {
-      loginWithEmailUseCase.call(
+      EasyLoading.show(status: S.current.loading);
+      emit(const LoadingState());
+      ({User? data, Status status}) login = await loginWithEmailUseCase.call(
         UserAuthEntity(
           name: '',
           email: emailLogin,
           password: passwordLogin,
         ),
       );
+      EasyLoading.dismiss();
+      final Status result = login.status;
+      if (result is Success) {
+        emit(SuccessState(login.data!));
+        ScaffoldKey.showTesterSnakeBar(S.current.login);
+      } else if (result is Failure) {
+        emit(FailureState(result.message));
+        ScaffoldKey.showTesterSnakeBar(result.message);
+      }
     }
   }
 
   void getUser() {
     auth.idTokenChanges().listen((User? user) {
       if (user == null) {
-        print('User is currently signed out!');
+        print('User is currently signed out!${user.toString()}');
       } else {
-        print('User is signed in!');
+        print('User is signed in!${user.toString()}');
       }
     });
   }

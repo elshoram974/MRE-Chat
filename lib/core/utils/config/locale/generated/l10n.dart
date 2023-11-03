@@ -319,6 +319,16 @@ class S {
       args: [max],
     );
   }
+
+  /// `loading...`
+  String get loading {
+    return Intl.message(
+      'loading...',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

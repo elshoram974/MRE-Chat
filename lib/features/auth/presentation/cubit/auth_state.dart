@@ -33,7 +33,11 @@ class LoadingState extends AuthState {
   const LoadingState();
 }
 
-class ErrorState extends AuthState {
+class SuccessState extends AuthState {
+  final User user;
+  const SuccessState(this.user);
+}
+class FailureState extends AuthState {
   final String message;
-  const ErrorState(this.message);
+  const FailureState(this.message);
 }
