@@ -21,6 +21,8 @@ class AuthCubit extends Cubit<AuthState> {
     emit(const ChangeObscureState());
   }
 
+  void signUp() async {}
+
   void getUser() {
     auth.idTokenChanges().listen((User? user) {
       if (user == null) {
