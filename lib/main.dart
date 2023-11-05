@@ -5,8 +5,6 @@ import 'package:chat/core/utils/config/router.dart';
 import 'package:chat/core/utils/constants/string.dart';
 import 'package:chat/core/utils/services/bloc_observer.dart';
 import 'package:chat/core/utils/services/get_it_singleton.dart';
-import 'package:chat/features/auth/data/models/user_model.dart';
-import 'package:chat/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -15,6 +13,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/utils/config/themes/app_theme.dart';
+import 'features/auth/data/models/user_model.dart';
+import 'features/auth/presentation/cubit/auth_cubit.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -25,6 +25,7 @@ void main() async {
     Firebase.initializeApp(options: DefaultFirebaseOptions.android),
     Hive.initFlutter(),
   ]);
+  Hive.registerAdapter<UserModel>(UserModelAdapter()); 
   await Hive.openBox<UserModel>(AppString.userHive);
   getItSingleton();
   Bloc.observer = MyBlocObserver();
