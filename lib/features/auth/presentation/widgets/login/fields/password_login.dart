@@ -12,9 +12,9 @@ class PasswordField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, AuthState>(
-      buildWhen: (p, c) => c is ChangeObscureState,
+      buildWhen: (p, c)=> c is ChangeObscureState && c.passType == PassType.loginPass,
       builder: (context, state) {
-        final bool obscurePass = cubit.obscurePass[FieldType.loginPass.index];
+        final bool obscurePass = cubit.obscurePass[PassType.loginPass.index];
         return CustomFieldForm(
           autofillHints: const [AutofillHints.password],
           label: S.of(context).password,
@@ -23,11 +23,10 @@ class PasswordField extends StatelessWidget {
           prefixIcon: Icons.lock_outline,
           obscureText: obscurePass,
           suffixIcon: obscurePass ? Icons.visibility : Icons.visibility_off,
-          onPressSuffixIcon: () =>
-              cubit.changeObscureLogin(FieldType.loginPass),
+          onPressSuffixIcon: () => cubit.changeObscureLogin(PassType.loginPass),
           onChanged: (val) => cubit.onChangeField(FieldType.loginPass, val),
           validator: (val) => AppValidator.auth(val, 8, 100, FieldType.loginPass, context),
-          onFieldSubmitted:(val) => cubit.login() ,
+          onFieldSubmitted: (val) => cubit.login(),
         );
       },
     );

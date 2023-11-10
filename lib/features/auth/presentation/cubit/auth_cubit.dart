@@ -26,6 +26,11 @@ enum FieldType {
   signUpPass,
   signUpRePass,
 }
+enum PassType {
+  loginPass,
+  signUpPass,
+  signUpRePass,
+}
 
 class AuthCubit extends Cubit<AuthState> {
   final LoginWithGoogleUseCase loginWithGoogleUseCase;
@@ -60,11 +65,15 @@ class AuthCubit extends Cubit<AuthState> {
   String passwordSignUp = '';
   String rePasswordSignUp = '';
 
-  List<bool> obscurePass = [true, true, true, true, true, true];
-  void changeObscureLogin(FieldType field) {
-    emit(const AuthInitial());
-    obscurePass[field.index] = !obscurePass[field.index];
-    emit(const ChangeObscureState());
+  final List<bool> obscurePass = [true, true, true];
+  void changeObscureLogin(PassType type) {
+    obscurePass[type.index] = !obscurePass[type.index];
+    emit(
+      ChangeObscureState(
+        isObscured: obscurePass[type.index],
+        passType: type,
+      ),
+    );
   }
 
   void onChangeField(FieldType field, String val) {
@@ -136,7 +145,7 @@ class AuthCubit extends Cubit<AuthState> {
           password: passwordLogin,
         ),
       );
-      EasyLoading.dismiss();
+      await EasyLoading.dismiss();
       final Status result = login.status;
       if (result is Success) {
         emit(SuccessState(login.data!));

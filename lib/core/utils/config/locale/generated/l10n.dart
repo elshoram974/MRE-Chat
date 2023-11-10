@@ -270,6 +270,26 @@ class S {
     );
   }
 
+  /// `We have blocked all requests from this device due to unusual activity. Try again later.`
+  String get tooManyRequests {
+    return Intl.message(
+      'We have blocked all requests from this device due to unusual activity. Try again later.',
+      name: 'tooManyRequests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A network error (such as timeout, interrupted connection or unreachable host) has occurred.`
+  String get networkRequestFailed {
+    return Intl.message(
+      'A network error (such as timeout, interrupted connection or unreachable host) has occurred.',
+      name: 'networkRequestFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Error: no user logged in to get uid.`
   String get noUserLoggedToGetUid {
     return Intl.message(

@@ -12,11 +12,7 @@ class EmailField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomFieldForm(
-      autofillHints: const [
-        AutofillHints.email,
-        AutofillHints.username,
-        AutofillHints.telephoneNumber,
-      ],
+      autofillHints: const [AutofillHints.email],
       label: S.of(context).email,
       hintText: S.of(context).emailUsernamePhone,
       keyboardType: TextInputType.emailAddress,

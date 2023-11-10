@@ -1,25 +1,20 @@
-import 'package:chat/core/utils/constants/string.dart';
-import 'package:hive/hive.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-import '../models/user_model.dart';
 
 abstract class AuthLocalDataSource {
   const AuthLocalDataSource();
-  UserModel? getUser();
+  User? getUser();
   String getUserUid();
   bool isLoggedIn();
 }
 
 class AuthLocalDataSourceImp extends AuthLocalDataSource {
-  const AuthLocalDataSourceImp();
+  const AuthLocalDataSourceImp(this.firebase);
+  final FirebaseAuth firebase;
 
   @override
-  UserModel? getUser() {
-    final Box<UserModel> box = Hive.box<UserModel>(AppString.userHive);
-    if (box.isEmpty) return null;
-
-    return box.values.first;
-  }
+  User? getUser() => firebase.currentUser;
+  
 
   @override
   String getUserUid() => getUser()!.uid;

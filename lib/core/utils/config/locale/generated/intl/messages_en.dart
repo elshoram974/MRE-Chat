@@ -53,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nameUsername":
             MessageLookupByLibrary.simpleMessage("Enter your name or username"),
+        "networkRequestFailed": MessageLookupByLibrary.simpleMessage(
+            "A network error (such as timeout, interrupted connection or unreachable host) has occurred."),
         "noUserLoggedToGetUid": MessageLookupByLibrary.simpleMessage(
             "Error: no user logged in to get uid."),
         "notSamePass":
@@ -62,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "retypePassword":
             MessageLookupByLibrary.simpleMessage("Retype the password"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
+        "tooManyRequests": MessageLookupByLibrary.simpleMessage(
+            "We have blocked all requests from this device due to unusual activity. Try again later."),
         "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
         "userDisabled": MessageLookupByLibrary.simpleMessage("User disabled."),
         "userNotFound": MessageLookupByLibrary.simpleMessage(

@@ -12,12 +12,11 @@ class EmailField extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomFieldForm(
       autofillHints: const [
-        AutofillHints.email,
-        AutofillHints.username,
-        AutofillHints.telephoneNumber,
+        AutofillHints.email
       ],
       label: S.of(context).email,
       hintText: S.of(context).emailUsernamePhone,
+      keyboardType: TextInputType.emailAddress,
       prefixIcon: Icons.person_2_outlined,
       onChanged: (val) => cubit.onChangeField(FieldType.loginEmail, val),
       validator: (val)=> AppValidator.auth(val, 5, 100, FieldType.loginEmail, context),

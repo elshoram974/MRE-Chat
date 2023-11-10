@@ -12,11 +12,18 @@ class AuthInitial extends AuthState {
 }
 
 class ChangeObscureState extends AuthState {
-  const ChangeObscureState();
+  final bool isObscured;
+  final PassType passType;
+  const ChangeObscureState({required this.isObscured, required this.passType});
+
+  @override
+  List<Object> get props => [passType, isObscured];
 }
+
 class SuccessValidateState extends AuthState {
   const SuccessValidateState();
 }
+
 class FailedValidateState extends AuthState {
   const FailedValidateState();
 }
@@ -37,6 +44,7 @@ class SuccessState extends AuthState {
   final User user;
   const SuccessState(this.user);
 }
+
 class FailureState extends AuthState {
   final String message;
   const FailureState(this.message);

@@ -1,9 +1,6 @@
-import 'package:chat/core/utils/constants/string.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hive/hive.dart';
 
 import '../../domain/entities/user_auth_entity.dart';
-import '../models/user_model.dart';
 
 abstract class AuthRemoteDataSource {
   const AuthRemoteDataSource();
@@ -22,10 +19,8 @@ class AuthRemoteDataSourceImp extends AuthRemoteDataSource {
   const AuthRemoteDataSourceImp(this.auth);
 
   @override
-  Future<void> signOut() async {
-    await auth.signOut();
-    await _clearUserIfExist();
-  }
+  Future<void> signOut() async=> await auth.signOut();
+  
 
   @override
   String getUserUid() => auth.currentUser!.uid;
@@ -42,20 +37,15 @@ class AuthRemoteDataSourceImp extends AuthRemoteDataSource {
       email: user.email!,
       password: user.password!,
     );
-    final User userCredential = credential.user!;
-    _saveUser(UserModel.fromUserCredential(userCredential));
-    return userCredential;
+    return credential.user!;
   }
 
   @override
   Future<User> loginWithGoogle() async {
     final GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
 
-    final UserCredential credential =
-        await auth.signInWithProvider(googleAuthProvider);
-    final User userCredential = credential.user!;
-    _saveUser(UserModel.fromUserCredential(userCredential));
-    return userCredential;
+    final UserCredential credential = await auth.signInWithProvider(googleAuthProvider);
+    return credential.user!;
   }
 
   @override
@@ -64,20 +54,6 @@ class AuthRemoteDataSourceImp extends AuthRemoteDataSource {
       email: user.email!,
       password: user.password!,
     );
-    final User userCredential = credential.user!;
-    _saveUser(UserModel.fromUserCredential(userCredential));
-    return userCredential;
-  }
-
-  Future<Box<UserModel>> _clearUserIfExist() async {
-    Box<UserModel> box = Hive.box<UserModel>(AppString.userHive);
-    if (box.isNotEmpty) await box.clear();
-    return box;
-  }
-
-  Future<bool> _saveUser(UserModel user) async {
-    Box<UserModel> box = await _clearUserIfExist();
-    final int i = await box.add(user);
-    return i != 0;
+    return credential.user!;
   }
 }

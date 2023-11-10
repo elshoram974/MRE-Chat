@@ -16,7 +16,9 @@ final GetIt getIt = GetIt.instance;
 void getItSingleton() {
   getIt.registerLazySingleton<AuthRepositories>(
     () => AuthRepositoriesImp(
-      authLocalDataSource: const AuthLocalDataSourceImp(),
+      authLocalDataSource: AuthLocalDataSourceImp(
+        FirebaseAuth.instance,
+      ),
       authRemoteDataSource: AuthRemoteDataSourceImp(
         FirebaseAuth.instance,
       ),

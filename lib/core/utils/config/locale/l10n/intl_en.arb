@@ -21,6 +21,8 @@
     "wrongPassword": "Wrong password provided for that user.",
     "userDisabled": "User disabled.",
     "invalidLoginCredentials": "An internal error has occurred.",
+    "tooManyRequests": "We have blocked all requests from this device due to unusual activity. Try again later.",
+    "networkRequestFailed": "A network error (such as timeout, interrupted connection or unreachable host) has occurred.",
     "noUserLoggedToGetUid": "Error: no user logged in to get uid.",
     "fillField": "fill this field",
     "enterValidEmail": "Enter valid E-mail",

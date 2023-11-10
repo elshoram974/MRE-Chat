@@ -12,7 +12,7 @@ class NameField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomFieldForm(
-      autofillHints: const [AutofillHints.name, AutofillHints.username],
+      autofillHints: const [AutofillHints.name],
       label: S.of(context).name,
       hintText: S.of(context).nameUsername,
       keyboardType: TextInputType.name,

@@ -14,6 +14,7 @@ abstract class Failure extends Status {
 class CacheFailure extends Failure {
   const CacheFailure(super.message);
 }
+
 class UnknownFailure extends Failure {
   const UnknownFailure(super.message);
 }
@@ -45,6 +46,10 @@ class ServerFailure extends Failure {
         return ServerFailure(S.current.userDisabled);
       case 'INVALID_LOGIN_CREDENTIALS':
         return ServerFailure(S.current.invalidLoginCredentials);
+      case 'too-many-requests':
+        return ServerFailure(S.current.tooManyRequests);
+      case 'network-request-failed':
+        return ServerFailure(S.current.networkRequestFailed);
       default:
     }
     return ServerFailure(

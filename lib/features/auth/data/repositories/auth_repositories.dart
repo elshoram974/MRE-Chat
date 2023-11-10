@@ -12,7 +12,6 @@ import '../../domain/entities/user_auth_entity.dart';
 import '../../domain/repositories/auth_repositories.dart';
 import '../datasources/auth_local_datasources.dart';
 import '../datasources/auth_remote_datasources.dart';
-import '../models/user_model.dart';
 
 class AuthRepositoriesImp extends AuthRepositories {
   const AuthRepositoriesImp({
@@ -128,18 +127,17 @@ class AuthRepositoriesImp extends AuthRepositories {
   }
 
   @override
-  ({UserModel? data, Status status}) getCurrentUser() {
+  ({User? data, Status status}) getCurrentUser() {
     try {
       final User u = authRemoteDataSource.getCurrentUser();
-      final user = UserModel.fromUserCredential(u);
-      return (data: user, status: Success<UserModel>(data: user));
+      return (data: u, status: Success<User>(data: u));
     } on FirebaseAuthException catch (e) {
       final ServerFailure fail = ServerFailure.fromFirebaseAuthException(e);
       log(fail.message);
 
       try {
-        final UserModel cacheU = authLocalDataSource.getUser()!;
-        return (data: cacheU, status: Success<UserModel>(data: cacheU));
+        final User cacheU = authLocalDataSource.getUser()!;
+        return (data: cacheU, status: Success<User>(data: cacheU));
       } catch (e) {
         log(e.toString());
         return (data: null, status: CacheFailure(e.toString()));
