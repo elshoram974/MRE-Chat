@@ -1,9 +1,6 @@
-import 'package:chat/core/utils/services/get_it_singleton.dart';
 import 'package:chat/features/auth/presentation/widgets/login/login_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../cubit/auth_cubit.dart';
 import '../widgets/login/create_account_button.dart';
 import '../widgets/login/fields/login_fields.dart';
 import '../widgets/login/login_button.dart';
@@ -20,19 +17,16 @@ class LoginScreen extends StatelessWidget {
     //   ScaffoldKey.showTesterSnakeBar(code);
     // });
 
-    return BlocProvider(
-      create: (context) => getIt.get<AuthCubit>(),
-      child: const Scaffold(
-        body: CustomScrollView(
-          physics: BouncingScrollPhysics(),
-          slivers: [
-            LoginLogo(),
-            LoginText(),
-            LoginFields(),
-            LoginButton(),
-            CreateNewAccount(),
-          ],
-        ),
+    return const Scaffold(
+      body: CustomScrollView(
+        physics: BouncingScrollPhysics(),
+        slivers: [
+          LoginLogo(),
+          LoginText(),
+          LoginFields(),
+          LoginButton(),
+          CreateNewAccount(),
+        ],
       ),
     );
   }

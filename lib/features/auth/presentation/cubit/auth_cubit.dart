@@ -12,7 +12,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../../domain/usecases/email_login_usecase.dart';
-import '../../domain/usecases/get_current_user_usecase.dart';
 import '../../domain/usecases/google_login_usecase.dart';
 import '../../domain/usecases/is_logged_in_usecase.dart';
 import '../../domain/usecases/sign_up_usecase.dart';
@@ -37,7 +36,6 @@ enum PassType {
 class AuthCubit extends Cubit<AuthState> {
   final LoginWithGoogleUseCase loginWithGoogleUseCase;
   final LoginWithEmailUseCase loginWithEmailUseCase;
-  final GetCurrentUserUseCase getCurrentUserUseCase;
   final IsLoggedInUseCase isLoggedInUseCase;
   final SignUpUseCase signUpUseCase;
   // final GetUserUidUseCase getUserUidUseCase;
@@ -45,7 +43,6 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit({
     required this.loginWithGoogleUseCase,
     required this.loginWithEmailUseCase,
-    required this.getCurrentUserUseCase,
     required this.isLoggedInUseCase,
     required this.signUpUseCase,
   }) : super(const AuthInitial()) {

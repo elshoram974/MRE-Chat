@@ -33,8 +33,6 @@ class AppRouter {
       GoRoute(
         path: home,
         builder: (BuildContext context, GoRouterState state) {
-          final AuthCubit login = BlocProvider.of<AuthCubit>(context);
-          if (!login.isClosed) login.close();
           return const HomeScreen();
         },
       ),

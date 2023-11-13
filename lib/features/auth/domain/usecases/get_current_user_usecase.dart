@@ -9,7 +9,7 @@ class GetCurrentUserUseCase extends UseCase<User?> {
   const GetCurrentUserUseCase(this.repo);
 
   @override
-  Future<({Status status, User? data})> call() async {
+  ({Status status, User? data}) call() {
     return repo.getCurrentUser();
   }
 }

@@ -4,6 +4,7 @@ import 'package:chat/core/utils/config/locale/locale_handler.dart';
 import 'package:chat/core/utils/config/router.dart';
 import 'package:chat/core/utils/services/bloc_observer.dart';
 import 'package:chat/core/utils/services/get_it_singleton.dart';
+import 'package:chat/features/home/presentation/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt.get<AuthCubit>()),
+        BlocProvider(create: (context) => getIt.get<HomeCubit>() ),
       ],
       child: const AppRoot(),
     );
