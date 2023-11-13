@@ -3,6 +3,7 @@ import 'package:chat/core/status/errors.dart';
 import 'package:chat/core/status/status.dart';
 import 'package:chat/core/status/success.dart';
 import 'package:chat/core/utils/config/locale/generated/l10n.dart';
+import 'package:chat/core/utils/config/router.dart';
 import 'package:chat/features/auth/domain/entities/user_auth_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ enum FieldType {
   signUpPass,
   signUpRePass,
 }
+
 enum PassType {
   loginPass,
   signUpPass,
@@ -47,7 +49,7 @@ class AuthCubit extends Cubit<AuthState> {
     required this.isLoggedInUseCase,
     required this.signUpUseCase,
   }) : super(const AuthInitial()) {
-    getUser();
+    // if (isLoggedInUseCase().data) closeAuth();
   }
   final FocusNode focusNode = FocusNode();
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -122,10 +124,11 @@ class AuthCubit extends Cubit<AuthState> {
           password: passwordSignUp,
         ),
       );
-      EasyLoading.dismiss();
+      await EasyLoading.dismiss();
       final Status result = signUp.status;
       if (result is Success) {
         emit(SuccessState(signUp.data!));
+        await closeAuth();
         ScaffoldKey.showTesterSnakeBar(S.current.signUp);
       } else if (result is Failure) {
         emit(FailureState(result.message));
@@ -150,6 +153,7 @@ class AuthCubit extends Cubit<AuthState> {
       if (result is Success) {
         emit(SuccessState(login.data!));
         ScaffoldKey.showTesterSnakeBar(S.current.login);
+        await closeAuth();
       } else if (result is Failure) {
         emit(FailureState(result.message));
         ScaffoldKey.showTesterSnakeBar(result.message);
@@ -157,20 +161,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  void getUser() {
-    auth.idTokenChanges().listen((User? user) {
-      if (user == null) {
-        print('User is currently signed out!${user.toString()}');
-      } else {
-        print('User is signed in!${user.toString()}');
-      }
-    });
-  }
-
-  @override
-  Future<void> close() {
-    focusNode.dispose();
-    print("object ");
-    return super.close();
+  Future<void> closeAuth() async {
+    await AppRouter.router.pushReplacement(AppRouter.home);
   }
 }

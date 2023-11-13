@@ -8,7 +8,7 @@ class IsLoggedInUseCase extends UseCase<bool> {
   const IsLoggedInUseCase(this.repo);
 
   @override
-  Future<({Status status, bool data})> call() async {
+  ({Status status, bool data}) call() {
     return repo.isLoggedIn();
   }
 }
