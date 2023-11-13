@@ -7,6 +7,7 @@ import 'package:chat/core/utils/config/router.dart';
 import 'package:chat/features/auth/domain/entities/user_auth_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -160,5 +161,6 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> closeAuth() async {
     await AppRouter.router.pushReplacement(AppRouter.home);
+    TextInput.finishAutofillContext();
   }
 }
